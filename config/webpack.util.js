@@ -10,11 +10,3 @@ exports.getEntry = function () {
     }
     return entry
 }
-
-exports.getProjectRootPath = function () {
-    if(__dirname.indexOf("node_modules") >= 0){
-        return __dirname.replace(/(\\node_modules\\).*/g,"");
-    }else{
-        return path.resolve(__dirname,"..");
-    }
-}

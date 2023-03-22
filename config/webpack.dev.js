@@ -8,10 +8,19 @@ module.exports = marge(baseConfig,{
     mode: 'development',
     //将错误信息准确的定位
     devtool: 'inline-source-map',
+    stats: 'errors-warnings',
     devServer: {
         static: {
             directory: path.join(CONFIG.PATH.ROOT, 'dev_root'),
             publicPath: CONFIG.PATH.PUBLIC_PATH_DEV
+        },
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+            },
+            progress: true,
+
         },
         compress: true,
         port: CONFIG.PORT,

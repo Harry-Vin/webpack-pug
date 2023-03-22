@@ -1,10 +1,10 @@
-const {getProjectRootPath} = require("./webpack.util");
+const path = require("path");
 
 exports.PORT = 3000;
 exports.PATH = {
     PUBLIC_PATH: "/",
     PUBLIC_PATH_DEV: "/",
-    ROOT: getProjectRootPath()
+    ROOT: path.resolve(__dirname,"..")
 }
 exports.DIR = {
     DIST: 'dist',
