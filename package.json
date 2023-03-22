@@ -4,7 +4,7 @@
   "description": "使用webpack构建pug多页面项目框架",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Harry-Wen/webpack-pug.git"
+    "url": "https://github.com/Harry-Vin/webpack-pug.git"
   },
   "author": {
     "name": "Harry Vin",
