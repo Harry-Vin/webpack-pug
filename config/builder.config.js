@@ -1,6 +1,9 @@
+const {getProjectRootPath} = require("./webpack.util");
+
 exports.PORT = 3000;
 exports.PATH = {
-    PUBLIC_PATH: "./"
+    PUBLIC_PATH: "./",
+    ROOT: getProjectRootPath()
 }
 exports.DIR = {
     DIST: 'dist',
@@ -8,5 +11,6 @@ exports.DIR = {
     SCRIPT: "js",
     FONT: "fonts",
     IMAGE: "images",
-    PUG: 'pug'
+    PUG: 'pug',
+    WORK: 'src'
 }

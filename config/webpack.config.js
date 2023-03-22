@@ -8,10 +8,10 @@ const {getEntry} = require("./webpack.util");
 module.exports = {
     entry: getEntry(),
     output: {
-        path: `${process.cwd()}/${CONFIG.DIR.DIST}`,
+        path: path.join(CONFIG.PATH.ROOT,CONFIG.DIR.DIST),
         publicPath: CONFIG.PATH.PUBLIC_PATH,
     },
-    context: path.resolve(__dirname, '../src'),
+    context: path.join(CONFIG.PATH.ROOT,CONFIG.DIR.WORK),
     devtool: false,
     plugins: [
         new CleanWebpackPlugin(),

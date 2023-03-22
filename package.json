@@ -1,6 +1,6 @@
 {
   "name": "@harry-vin/webpack-pug",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "使用webpack构建pug多页面项目框架",
   "repository": {
     "type": "git",
