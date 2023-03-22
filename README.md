@@ -5,6 +5,6 @@
 
 #### 软件架构
 * [webpack](https://webpack.js.org)
-    > 主要运行环境
+    > 一个构建工具
 * [pug](https://pugjs.org)
-    >一个模板引擎
+    > 一个模板引擎
