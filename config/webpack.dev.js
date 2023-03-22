@@ -22,6 +22,12 @@ module.exports = marge(baseConfig,{
             progress: true,
 
         },
+        watchFiles: {
+            paths: `${CONFIG.PATH.ROOT}/${CONFIG.DIR.WORK}/**/*.*`,
+            options: {
+                usePolling: true,
+            },
+        },
         compress: true,
         port: CONFIG.PORT,
     },
