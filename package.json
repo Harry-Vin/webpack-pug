@@ -27,7 +27,7 @@
     "hv-pug-build": "bin/build.js",
     "hv-pug-dev": "bin/start.js"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@babel/runtime": "^7.10.4",
     "core-js": "3",
     "@babel/core": "^7.10.4",
