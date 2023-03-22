@@ -17,7 +17,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new PugPlugin({
-            pretty: true, // formatting HTML, useful for development mode
+            pretty: false, // formatting HTML, useful for development mode
             js: {
                 // output filename of extracted JS file from source script
                 filename: `/${CONFIG.DIR.SCRIPT}/[name].[contenthash:5].js`,
