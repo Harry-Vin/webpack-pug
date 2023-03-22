@@ -1,0 +1,125 @@
+/**
+* 创建人：Harry Vin
+* 创建时间：2023/2/16 12:48
+* 说明：全局距离信息样式定义
+**/
+
+/** 动态生成样式 **/
+@for $i from 0 through 500 {
+
+  // 字宽
+  @if($i < 9){
+    .bsl-fw-#{$i}00 {
+      font-weight: $i * 100;
+    }
+  }
+
+  @if ($i % 2 == 0 and $i <= 200) {
+    // 内边距
+    .bsl-p-#{$i} {
+      padding: #{$i}px;
+    }
+    .bsl-pl-#{$i} {
+      padding-left: #{$i}px;
+    }
+    .bsl-pr-#{$i} {
+      padding-right: #{$i}px;
+    }
+    .bsl-pt-#{$i} {
+      padding-top: #{$i}px;
+    }
+    .bsl-pb-#{$i} {
+      padding-bottom: #{$i}px;
+    }
+
+
+
+    // 外边距
+    .bsl-m-#{$i} {
+      margin: #{$i}px;
+    }
+    .bsl-ml-#{$i} {
+      margin-left: #{$i}px;
+    }
+    .bsl-mr-#{$i} {
+      margin-right: #{$i}px;
+    }
+    .bsl-mt-#{$i} {
+      margin-top: #{$i}px;
+    }
+    .bsl-mb-#{$i} {
+      margin-bottom: #{$i}px;
+    }
+
+    //圆角
+    .bsl-br {
+      border-radius: #{$i}px;
+    }
+    .bsl-br-tl-#{$i} {
+      border-top-left-radius: #{$i}px;
+    }
+    .bsl-br-tr-#{$i} {
+      border-top-right-radius: #{$i}px;
+    }
+    .bsl-br-bl-#{$i} {
+      border-bottom-left-radius: #{$i}px;
+    }
+    .bsl-br-br-#{$i} {
+      border-bottom-right-radius: #{$i}px;
+    }
+
+    // 字体大小
+    .bsl-fs-#{$i} {
+      font-size: #{$i}px;
+    }
+
+    // 行间距
+    .bsl-lh-#{$i}{
+      line-height: #{$i}px;
+    }
+  }
+
+  @if ($i % 5 == 0) {
+    // 宽度
+    .bsl-w-#{$i} {
+      width: #{$i}px;
+    }
+    // 高度
+    .bsl-h-#{$i} {
+      height: #{$i}px;
+    }
+  }
+
+}
+
+/** 普通样式 **/
+
+.bsl-lh-1 {
+  line-height: 1;
+}
+
+.bsl-display-block {
+  display: block;
+}
+
+.bsl-display-none {
+  display: none;
+}
+
+
+/** 颜色样式 **/
+$while: #ffffff;
+
+.bsl-font-while {
+  color: $while;
+}
+
+.bsl-bg-while {
+  background-color: $while;
+}
+
+.flex {
+  border-width: 1px;
+  border-color: #FFFF;
+  border-style: dashed;
+}

@@ -1,17 +1,18 @@
 const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const CONFIG = require('./builder.config');
+const CONFIG = require('./builder.config.js');
 const {resolve} = path;
 const PugPlugin = require("pug-plugin");
-const {getEntry} = require("./webpack.util");
+const {getEntry} = require("./webpack.util.js");
+const BabelConfig = require("../babel.config.js");
 
 module.exports = {
     entry: getEntry(),
     output: {
-        path: path.join(CONFIG.PATH.ROOT,CONFIG.DIR.DIST),
+        path: path.join(CONFIG.PATH.ROOT, CONFIG.DIR.DIST),
         publicPath: CONFIG.PATH.PUBLIC_PATH,
     },
-    context: path.join(CONFIG.PATH.ROOT,CONFIG.DIR.WORK),
+    context: path.join(CONFIG.PATH.ROOT, CONFIG.DIR.WORK),
     devtool: false,
     plugins: [
         new CleanWebpackPlugin(),
@@ -59,7 +60,12 @@ module.exports = {
                         loader: "css-loader"
                     },
                     {
-                        loader: "postcss-loader"
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, '../postcss.config.js'),
+                            }
+                        }
                     },
                     {
                         loader: "sass-loader"
@@ -70,7 +76,12 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {
-                        loader: "postcss-loader"
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                config: path.resolve(__dirname, '../postcss.config.js'),
+                            }
+                        }
                     },
                     {
                         loader: "css-loader"
@@ -101,28 +112,22 @@ module.exports = {
                 ]
             },
             {
-                test: /\.js$/,
+                test: /\.(ts|tsx)$/,
                 exclude: /(node_modules|bower_components)/,
-                use: ['babel-loader']
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: BabelConfig
+                    }
+                ]
             },
             {
-                test: /\.ts$/,
-                use: ['babel-loader'],
-                exclude: /(node_modules|bower_components)/,
-            },
-            {
-                test: /\.(ts|js)x?$/,
+                test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
-                    options: {
-                        presets: [
-                            "@babel/preset-env",
-                            "@babel/preset-react",
-                            "@babel/preset-typescript",
-                        ],
-                    },
-                },
+                    options: BabelConfig
+                }
             },
         ]
     },
