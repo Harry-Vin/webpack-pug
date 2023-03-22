@@ -1,6 +1,6 @@
 {
   "name": "@harry-vin/webpack-pug",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "使用webpack构建pug多页面项目框架",
   "repository": {
     "type": "git",
@@ -15,21 +15,11 @@
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
     "dev": "webpack-dev-server  --config config/webpack.dev.js --open"
   },
-  "files": [
-    "bin",
-    "config",
-    "babel.config.js",
-    "LICENSE",
-    "postcss.config.js",
-    "tsconfig.json"
-  ],
-  "bin": {
-    "hv-pug-build": "bin/build.js",
-    "hv-pug-dev": "bin/start.js"
+  "dependencies": {
+    "@babel/runtime": "^7.10.4",
+    "core-js": "3"
   },
   "peerDependencies": {
-    "@babel/runtime": "^7.10.4",
-    "core-js": "3",
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.10.4",
