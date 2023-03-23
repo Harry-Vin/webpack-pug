@@ -1,9 +1,9 @@
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CONFIG = require('./builder.config.js');
-const {resolve} = path;
+const { resolve } = path;
 const PugPlugin = require("pug-plugin");
-const {getEntry} = require("./webpack.util.js");
+const { getEntry } = require("./webpack.util.js");
 const BabelConfig = require("../babel.config.js");
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
         path: path.join(CONFIG.PATH.ROOT, CONFIG.DIR.DIST),
         publicPath: CONFIG.PATH.PUBLIC_PATH,
     },
-    context: path.join(CONFIG.PATH.ROOT, CONFIG.DIR.WORK),
+    context: CONFIG.PATH.ROOT,
     devtool: false,
     plugins: [
         new CleanWebpackPlugin(),
@@ -30,23 +30,23 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            '@': resolve(__dirname, '../src'),
+            '@': path.join(CONFIG.PATH.ROOT, CONFIG.DIR.WORK),
         },
         extensions: ['.tsx', '.ts', '.js'],
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    minChunks: 1,
-                    chunks: 'all',
-                    priority: 100
-                }
-            }
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             vendors: {
+    //                 test: /[\\/]node_modules[\\/]/,
+    //                 name: 'vendors',
+    //                 minChunks: 1,
+    //                 chunks: 'all',
+    //                 priority: 100
+    //             }
+    //         }
+    //     }
+    // },
     module: {
         rules: [
             {
@@ -89,27 +89,20 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[hash:5].[ext]',
-                            outputPath: CONFIG.DIR.IMAGE,
-                        }
-                    },
-                ]
+                test: /\.(png|jpg|jpeg|ico)/,
+                type: 'asset/resource',
+                generator: {
+                    // output filename of images
+                    filename: `${CONFIG.DIR.IMAGE}/[name].[hash:8][ext]`,
+                },
             },
             {
-                test: /\.(eot|woff2|woff|ttf|svg)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: CONFIG.DIR.FONT
-                        }
-                    },
-                ]
+                test: /\.(woff|woff2|eot|ttf|otf|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    // output filename of fonts
+                    filename: `${CONFIG.DIR.FONT}/[name][ext][query]`,
+                },
             },
             {
                 test: /\.(ts|tsx)$/,
