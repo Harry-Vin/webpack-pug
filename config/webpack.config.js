@@ -1,7 +1,5 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CONFIG = require('./builder.config.js');
-const { resolve } = path;
 const PugPlugin = require("pug-plugin");
 const { getEntry } = require("./webpack.util.js");
 const BabelConfig = require("../babel.config.js");
@@ -15,7 +13,6 @@ module.exports = {
     context: CONFIG.PATH.ROOT,
     devtool: false,
     plugins: [
-        new CleanWebpackPlugin(),
         new PugPlugin({
             pretty: false, // formatting HTML, useful for development mode
             js: {
@@ -34,19 +31,19 @@ module.exports = {
         },
         extensions: ['.tsx', '.ts', '.js'],
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendors: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: 'vendors',
-    //                 minChunks: 1,
-    //                 chunks: 'all',
-    //                 priority: 100
-    //             }
-    //         }
-    //     }
-    // },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    minChunks: 1,
+                    chunks: 'all',
+                    priority: 100
+                }
+            }
+        }
+    },
     module: {
         rules: [
             {
