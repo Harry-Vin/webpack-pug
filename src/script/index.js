@@ -1,4 +1,6 @@
+import 'uno.css'
 
 window.onload = function () {
-    console.log("hello,world");
+    const divs = document.getElementsByTagName('div')[0];
+    console.log(divs)
 }
