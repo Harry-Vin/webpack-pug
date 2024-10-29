@@ -1,7 +1,7 @@
 const path = require('path');
 const CONFIG = require('./builder.config.js');
 const PugPlugin = require("pug-plugin");
-const { getEntry } = require("./webpack.util.js");
+const {getEntry} = require("./webpack.util.js");
 const BabelConfig = require("../babel.config.js");
 
 module.exports = async function () {
@@ -10,13 +10,12 @@ module.exports = async function () {
         entry: getEntry(),
         output: {
             path: path.join(CONFIG.PATH.ROOT, CONFIG.DIR.DIST),
-            publicPath: CONFIG.PATH.PUBLIC_PATH,
         },
         context: CONFIG.PATH.ROOT,
         devtool: false,
         plugins: [
             new UnoCss({
-                configFile: path.resolve(__dirname,"../uno.config.js"),
+                configFile: path.resolve(__dirname, "../uno.config.js"),
             }),
             new PugPlugin({
                 pretty: false, // formatting HTML, useful for development mode

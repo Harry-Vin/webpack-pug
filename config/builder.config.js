@@ -2,7 +2,7 @@ const path = require("path");
 
 exports.PORT = 3000; // 开发环境端口号
 exports.PATH = {
-    PUBLIC_PATH: "/", // 打包的服务器资源目录路径
+    PUBLIC_PATH: "/web/", // 打包的服务器资源目录路径
     PUBLIC_PATH_DEV: "/", //开发时的服务器资源路径（一般情况下无需改动）
     ROOT: path.resolve(__dirname,"..") //当前项目根目录（一般情况下无需改动）
 }
